@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'OptimaLight';
+  src: url('/public/OptimaNovaLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/public/Helvetica.otf') format('opentype');
+}
