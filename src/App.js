@@ -4,6 +4,9 @@ import { AppBar, Typography, Toolbar, Box, Grid, Paper, Button, Card, CardAction
 import styled from 'styled-components';
 import AdbIcon from '@mui/icons-material/Adb';
 import { style } from '@mui/system';
+import { useState, useEffect } from 'react';
+import { useIdle } from 'use-idle';
+
 
 function App() {
 
@@ -59,6 +62,7 @@ function App() {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   }
 `;
+
 
   return (
     <Root>
@@ -124,7 +128,6 @@ function App() {
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       A therapeutic massage that is designed to relax the entire body...                      A therapeutic massage that is designed to relax the entire body...
-
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -209,10 +212,27 @@ function App() {
             Booking Section
           </GridItem>
         </Grid>
-        <Grid container direction="row" display="flex" height="30vh" width="100%" sx={{ mb: 4 }}>
-          <GridItem item xs={12} sm={12} md={12} lg={12} xl={12} sx={{ backgroundColor: "pink" }}>
-            Contact Section
-          </GridItem>
+        <Grid container direction="column" display="flex" height="30vh" width="100%" xs={12} sm={12} md={12} lg={12} xl={12} sx={{ mb: 4, backgroundColor: "pink" }}>
+          <Typography variant="h6" style={{ fontSize: 30, textAlign: "center" }}>
+            <OptimaFont>
+              Contact Information
+            </OptimaFont>
+          </Typography>
+          <Grid container direction="row" display="flex" width="100%" alignItems="center" sx={{ mb: 4, backgroundColor: "gold" }}>
+            <Box>
+              <img src={process.env.PUBLIC_URL + '/25.png'} alt="Your image description" width={100} sx={{ backgroundColor: "red" }} />
+
+            </Box>
+            <Grid container direction="column" display="flex" justifySelf="center" alignContent="center" sx={{ backgroundColor: "grey" }}>
+              <Grid container direction="row">
+                <img src={process.env.PUBLIC_URL + '/mail.svg'} alt="Your image description" width={30} height="auto" />
+                <HelveticaFont>
+                  ballendinermt@gmail.com
+                </HelveticaFont>
+
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
       </GridContainer>
       <Footer />
@@ -223,47 +243,97 @@ function App() {
 
 export default App;
 
-const StyledAppBar = styled(AppBar)({
-  "&&": {
-    backgroundColor: "transparent",
-    transition: "background-color 0.5s ease",
-    "&:hover": {
-      backgroundColor: "rgba(0, 0, 0, 0.1)"
-    }
-  }
+const HelveticaFont = styled('p')({
+  fontFamily: 'Helvetica',
+  margin: 0,
 });
 
+const OptimaFont = styled('p')({
+  fontFamily: 'OptimaLight',
+  lineHeight: 1,
+  margin: 0
+});
+
+const StyledAppBar = styled(AppBar)(({ isVisible }) => ({
+  "&&": {
+    // backgroundColor: "#8B5E3C",
+    backgroundColor: 'white',
+    opacity: isVisible ? 1 : 0,
+    transition: "opacity 0.5s ease, background-color 0.5s ease",
+    "&:hover": {
+      // backgroundColor: "grey",
+    },
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 100,
+  }
+}));
 
 const StyledToolbar = styled(Toolbar)({
   display: 'flex',
-  justifyContent: 'space-between',
+  // justifyContent: 'space-between',
+  justifyContent: 'center',
   alignItems: "center"
 });
 
-const AnotherAppBar = () => (
-  <StyledAppBar position='fixed'>
-    <StyledToolbar>
-      <Box display="flex">
-        <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }} >SpaName
-        </Typography>
-        <AdbIcon sx={{ display: { xs: "block", sm: "none" } }}></AdbIcon>
-      </Box>
-      <Box display="flex">
-        <Grid container direction="row" justify="space-between" spacing={3}>
-          <Grid item>
-            <Typography variant="body1">About</Typography>
+function AnotherAppBar() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    let timeoutId = null;
+    const handleVisibilityChange = () => {
+      setIsVisible(false);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => setIsVisible(true), 300);
+    };
+
+    window.addEventListener("scroll", handleVisibilityChange);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("scroll", handleVisibilityChange);
+    };
+  }, []);
+
+  return (
+    <StyledAppBar isVisible={isVisible} position='fixed'>
+      <StyledToolbar>
+        <Box display="flex">
+          {/* <Typography variant="h6" style={{ color: 'black', fontSize: 30 }} sx={{ display: { xs: "none", sm: "block" } }}>
+            <OptimaFont>
+              Oasis Massage Therapy
+            </OptimaFont>
+          </Typography> */}
+          <img src={process.env.PUBLIC_URL + '/logo.jpeg'} alt="Your image description" style={{ width: 80, height: "auto" }}
+          />
+        </Box>
+        <Box display="flex" backgroundColor="">
+          <Grid container direction="row" justify="space-between">
+            <Typography variant="h8" style={{ color: 'black', fontSize: 20 }}>
+              <OptimaFont>
+                About
+              </OptimaFont>
+            </Typography>
+            <div style={{ width: 20 }} />
+            <Typography variant="h8" style={{ color: 'black', fontSize: 20 }}>
+              <OptimaFont>
+                Services
+              </OptimaFont>
+            </Typography>
+            <div style={{ width: 20 }} />
+            <Typography variant="h8" style={{ color: 'black', fontSize: 20 }}>
+              <OptimaFont>
+                Contact
+              </OptimaFont>
+            </Typography>
           </Grid>
-          <Grid item>
-            <Typography variant="body1">Two</Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant="body1">Three</Typography>
-          </Grid>
-        </Grid>
-      </Box>
-    </StyledToolbar>
-  </StyledAppBar>
-);
+        </Box>
+      </StyledToolbar>
+    </StyledAppBar>
+  )
+}
 
 
 const FooterContainer = styled.footer`
