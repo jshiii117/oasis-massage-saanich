@@ -1,11 +1,15 @@
 import './App.css';
 import React from 'react';
-import { AppBar, Typography, Toolbar, Box, Grid, Paper, Button, Card, CardActionArea, CardMedia, CardContent } from '@mui/material';
+import { AppBar, Typography, Toolbar, Box, Grid, List, ListItem, ListItemText, ListItemIcon, Button, Card, CardActionArea, CardMedia, CardContent } from '@mui/material';
 import styled from 'styled-components';
 import AdbIcon from '@mui/icons-material/Adb';
 import { style } from '@mui/system';
 import { useState, useEffect } from 'react';
-import { useIdle } from 'use-idle';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Face2Icon from '@mui/icons-material/Face2';
+import StoreIcon from '@mui/icons-material/Store';
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 
 
 function App() {
@@ -67,29 +71,28 @@ function App() {
   return (
     <Root>
       <GridContainer container direction="column" spacing={0}>
-        <Grid container direction="row" display="flex" height="100vh" width="100%" sx={{ mb: 4 }}>
-          <AnotherAppBar />
-          <GridItem item xs={12} sm={12} md={6} lg={6} xl={6}>
-            <Grid container direction="column" display="flex" height="100%" justifyContent="center" sx={{ backgroundColor: "" }}>
+        <AnotherAppBar />
+        <Grid container direction="row" display="flex" width="100%" sx={{ mb: 4 }}>
+          <GridItem item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ marginY: 10 }}>
+            <Grid container direction="column" display="flex" height="100%">
               <Typography variant="h3" style={{ fontSize: 60 }}>
                 <OptimaFont>
                   Healing Hands, Tranquil Minds
                 </OptimaFont>
               </Typography>
-              <div style={{ height: 20 }} />
               <Typography variant="h6" style={{ fontSize: 30 }}>
                 <OptimaFont>
                   Oasis Massage Therapy
                 </OptimaFont>
               </Typography>
-              <div style={{ height: 10 }} />
+              <div style={{ height: 40 }} />
               <ColorButton variant="contained" size="large">
                 <HelveticaFont>Book Now</HelveticaFont>
               </ColorButton>
             </Grid>
           </GridItem>
-          <GridItem item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ backgroundColor: "blue" }}>
-            <img src={process.env.PUBLIC_URL + '/massage.jpg'} alt="Your image description" width="90%" />
+          <GridItem item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ backgroundColor: "" }}>
+            <img src={process.env.PUBLIC_URL + '/massage.jpg'} alt="Your image description" width="100%" />
           </GridItem>
         </Grid>
 
@@ -212,25 +215,42 @@ function App() {
             Booking Section
           </GridItem>
         </Grid>
-        <Grid container direction="column" display="flex" height="30vh" width="100%" xs={12} sm={12} md={12} lg={12} xl={12} sx={{ mb: 4, backgroundColor: "pink" }}>
-          <Typography variant="h6" style={{ fontSize: 30, textAlign: "center" }}>
-            <OptimaFont>
-              Contact Information
-            </OptimaFont>
-          </Typography>
-          <Grid container direction="row" display="flex" width="100%" alignItems="center" sx={{ mb: 4, backgroundColor: "gold" }}>
-            <Box>
-              <img src={process.env.PUBLIC_URL + '/25.png'} alt="Your image description" width={100} sx={{ backgroundColor: "red" }} />
+        <Grid container direction="column" display="flex" width="100%" maxWidth={800} alignSelf="center" sx={{ mb: 4, backgroundColor: "" }}>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Typography variant="h6" style={{ fontSize: 30, textAlign: "center" }}>
+              <OptimaFont>
+                Contact Section
+              </OptimaFont>
+            </Typography>
+            <div style={{ height: 20 }} />
+            <Grid container direction="row" display="flex" width="100%" sx={{ mb: 4, backgroundColor: "", justifyContent: "space-evenly" }}>
+              <Box lg={6} sx={{ backgroundColor: "grey" }}>
+                <img src={process.env.PUBLIC_URL + '/25.png'} alt="Your image description" width={300} />
+              </Box>
+              <ContactList>
 
-            </Box>
-            <Grid container direction="column" display="flex" justifySelf="center" alignContent="center" sx={{ backgroundColor: "grey" }}>
-              <Grid container direction="row">
-                <img src={process.env.PUBLIC_URL + '/mail.svg'} alt="Your image description" width={30} height="auto" />
-                <HelveticaFont>
-                  ballendinermt@gmail.com
-                </HelveticaFont>
-
-              </Grid>
+              </ContactList>
+              {/* <Grid lg={6} container direction="column" display="flex" height="100%" alignSelf="center">
+                <Grid container direction="row" alignItems="center">
+                  <img src={process.env.PUBLIC_URL + '/mail.svg'} alt="Your image description" width={30} height="auto" />
+                  <div style={{ width: 10 }} />
+                  <Typography variant="h6" style={{ fontSize: 15, textAlign: "center" }}>
+                    <HelveticaFont>
+                      ballendinermt@gmail.com
+                    </HelveticaFont>
+                  </Typography>
+                </Grid>
+                <div style={{ height: 5 }} />
+                <Grid container direction="row" alignItems="center">
+                  <img src={process.env.PUBLIC_URL + '/map.svg'} alt="Your image description" width={30} height="auto" />
+                  <div style={{ width: 10 }} />
+                  <Typography variant="h6" style={{ fontSize: 15, textAlign: "" }}>
+                    <HelveticaFont>
+                      2002 Deerbrush Cres. North Saanich BC. V8L 0C5
+                    </HelveticaFont>
+                  </Typography>
+                </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
         </Grid>
@@ -257,6 +277,7 @@ const OptimaFont = styled('p')({
 const StyledAppBar = styled(AppBar)(({ isVisible }) => ({
   "&&": {
     // backgroundColor: "#8B5E3C",
+    height: "12vh",
     backgroundColor: 'white',
     opacity: isVisible ? 1 : 0,
     transition: "opacity 0.5s ease, background-color 0.5s ease",
@@ -278,6 +299,22 @@ const StyledToolbar = styled(Toolbar)({
   alignItems: "center"
 });
 
+const AppBarItem = styled(Typography)({
+  color: 'black',
+  fontSize: 20,
+  textTransform: 'none',
+  transition: 'color 0.3s linear',
+  '&:hover': {
+    color: '#A67C52'
+  }
+});
+
+const AppBarButton = styled(Button)({
+  backgroundColor: "transparent"
+})
+
+
+
 function AnotherAppBar() {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -297,6 +334,8 @@ function AnotherAppBar() {
     };
   }, []);
 
+  const [hover, setHover] = useState(false)
+
   return (
     <StyledAppBar isVisible={isVisible} position='fixed'>
       <StyledToolbar>
@@ -306,16 +345,25 @@ function AnotherAppBar() {
               Oasis Massage Therapy
             </OptimaFont>
           </Typography> */}
-          <img src={process.env.PUBLIC_URL + '/logo.jpeg'} alt="Your image description" style={{ width: 80, height: "auto" }}
+          <img src={process.env.PUBLIC_URL + '/logo.png'} alt="Your image description" style={{ width: 60, height: "auto" }}
           />
         </Box>
         <Box display="flex" backgroundColor="">
+          <div style={{ width: 20 }} />
           <Grid container direction="row" justify="space-between">
-            <Typography variant="h8" style={{ color: 'black', fontSize: 20 }}>
-              <OptimaFont>
-                About
-              </OptimaFont>
-            </Typography>
+            <AppBarButton style={{
+              backgroundColor: 'transparent'
+            }
+            }>
+              <AppBarItem variant="h8"
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+              >
+                <OptimaFont style={{ color: hover ? '#A67C52' : 'black', transition: 'color 0.3s linear' }}>
+                  About
+                </OptimaFont>
+              </AppBarItem>
+            </AppBarButton>
             <div style={{ width: 20 }} />
             <Typography variant="h8" style={{ color: 'black', fontSize: 20 }}>
               <OptimaFont>
@@ -331,9 +379,56 @@ function AnotherAppBar() {
           </Grid>
         </Box>
       </StyledToolbar>
-    </StyledAppBar>
+    </StyledAppBar >
   )
 }
+
+const ListItemStyled = styled(ListItem)({
+  border: '1px solid #ddd',
+  borderRadius: '20px',
+  padding: '10px',
+  marginBottom: '10px',
+});
+
+function ContactList() {
+  return (
+    <List>
+      <ListItemStyled>
+        <ListItemIcon>
+          <StoreIcon />
+        </ListItemIcon>
+        <ListItemText primary="Oasis Massage Therapy" />
+      </ListItemStyled>
+      <ListItemStyled>
+        <ListItemIcon>
+          <Face2Icon />
+        </ListItemIcon>
+        <ListItemText primary="Maria Lourdes Ballendine" />
+      </ListItemStyled>
+      <ListItemStyled>
+        <ListItemIcon>
+          <PhoneIcon />
+        </ListItemIcon>
+        <ListItemText primary="(778) 919-1341" />
+      </ListItemStyled>
+      <ListItemStyled>
+        <ListItemIcon>
+          <LocationOnIcon />
+        </ListItemIcon>
+        <ListItemText primary="2002 Deerbrush Cres. North Saanich BC. V8L 0C5" />
+      </ListItemStyled>
+      <ListItemStyled style={{ maxHeight: 400, maxWidth: 450 }}>
+        <ListItemIcon>
+          <ContactSupportIcon />
+        </ListItemIcon>
+        <ListItemText
+          primary="For all inquiries, please contact me by email or phone during business hours, 9AM-5PM PST from Monday to Sunday"
+        />
+      </ListItemStyled>
+    </List>
+  );
+}
+
 
 
 const FooterContainer = styled.footer`
