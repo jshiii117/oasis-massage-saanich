@@ -2,8 +2,7 @@ import React from 'react';
 import { AppBar, Typography, Toolbar, Box, Grid, Button } from '@mui/material';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import theme from '../styles/theme';
-import { OptimaTypography } from '../styles/globalStyles';
+import { OptimaType } from '../styles/globalStyles';
 
 const StyledAppBar = styled(AppBar)(({ isVisible }) => ({
     "&&": {
@@ -68,7 +67,7 @@ function CustomAppBar() {
         <StyledAppBar isVisible={isVisible} position='fixed'>
             <StyledToolbar>
                 <Box display="flex">
-                    <img src={process.env.PUBLIC_URL + '/logo.png'} alt="Your image description" style={{ width: 60, height: "auto" }}
+                    <img src={process.env.PUBLIC_URL + '/logo.png'} alt="Placeholder alt text" style={{ width: 60, height: "auto" }}
                     />
                 </Box>
                 <Box display="flex" backgroundColor="">
@@ -78,7 +77,7 @@ function CustomAppBar() {
                             backgroundColor: 'transparent'
                         }
                         }>
-                            <OptimaTypography variant="h8" onMouseEnter={() => setHover([true, false, false])}
+                            <OptimaType variant="h8" onMouseEnter={() => setHover([true, false, false])}
                                 onMouseLeave={() => setHover([false, false, false])}
                                 style={{
                                     color: hover[0] ? '#A67C52' : 'black',
@@ -87,7 +86,7 @@ function CustomAppBar() {
                                     transition: 'color 0.3s linear',
                                 }}>
                                 About
-                            </OptimaTypography>
+                            </OptimaType>
                         </AppBarButton>
                         <div style={{ width: 20 }} />
                         <AppBarButton style={{
@@ -98,14 +97,14 @@ function CustomAppBar() {
                                 onMouseEnter={() => setHover([false, true, false])}
                                 onMouseLeave={() => setHover([false, false, false])}
                             >
-                                <OptimaTypography variant="h8" style={{
+                                <OptimaType variant="h8" style={{
                                     color: hover[1] ? '#A67C52' : 'black',
                                     fontSize: 20,
                                     textTransform: 'none',
                                     transition: 'color 0.3s linear',
                                 }}>
                                     Services
-                                </OptimaTypography>
+                                </OptimaType>
                             </AppBarItem>
                         </AppBarButton>
                         <div style={{ width: 20 }} />
@@ -117,14 +116,14 @@ function CustomAppBar() {
                                 onMouseEnter={() => setHover([false, false, true])}
                                 onMouseLeave={() => setHover([false, false, false])}
                             >
-                                <OptimaTypography variant="h8" style={{
+                                <OptimaType variant="h8" style={{
                                     color: hover[2] ? '#A67C52' : 'black',
                                     fontSize: 20,
                                     textTransform: 'none',
                                     transition: 'color 0.3s linear',
                                 }}>
                                     Contact
-                                </OptimaTypography>
+                                </OptimaType>
                             </AppBarItem>
                         </AppBarButton>
                     </Grid>

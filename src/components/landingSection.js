@@ -2,8 +2,7 @@ import '../App.css';
 import React from 'react';
 import { Typography, Grid, Button } from '@mui/material';
 import styled from 'styled-components';
-import { OptimaTypography } from '../styles/globalStyles';
-import theme from '../styles/theme';
+import { OptimaType } from '../styles/globalStyles';
 
 const GridItem = styled(Grid)({
     display: 'flex',
@@ -37,12 +36,12 @@ function LandingSection() {
         <Grid container direction="row" display="flex" width="100%" sx={{ mb: 4 }}>
             <GridItem item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ marginY: 10 }}>
                 <Grid container direction="column" display="flex" height="100%">
-                    <OptimaTypography className="optima" variant="h3" style={{ fontSize: 60 }}>
+                    <OptimaType className="optima" variant="h3" style={{ fontSize: 60 }}>
                         Healing Hands, Tranquil Minds
-                    </OptimaTypography>
-                    <OptimaTypography>
+                    </OptimaType>
+                    <OptimaType>
                         Oasis
-                    </OptimaTypography>
+                    </OptimaType>
                     <Typography variant="h6" style={{ fontSize: 30 }}>
                         <OptimaFont>
                             Oasis Massage Therapy
@@ -55,7 +54,7 @@ function LandingSection() {
                 </Grid>
             </GridItem>
             <GridItem item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ backgroundColor: "" }}>
-                <img src={process.env.PUBLIC_URL + '/massage.jpg'} alt="Your image description" width="100%" />
+                <img src={process.env.PUBLIC_URL + '/massage.jpg'} alt="Placeholder alt text" width="100%" />
             </GridItem>
         </Grid>
     )
