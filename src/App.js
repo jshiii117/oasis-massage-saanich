@@ -10,11 +10,11 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import Face2Icon from '@mui/icons-material/Face2';
 import StoreIcon from '@mui/icons-material/Store';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+import CustomAppBar from './/components/appbar';
+import theme from './styles/theme';
 
 
 function App() {
-
-
   const Root = styled.div`
   background-color: black;
   min-height: 100vh;
@@ -67,18 +67,15 @@ function App() {
   }
 `;
 
-
   return (
     <Root>
       <GridContainer container direction="column" spacing={0}>
-        <AnotherAppBar />
+        <CustomAppBar />
         <Grid container direction="row" display="flex" width="100%" sx={{ mb: 4 }}>
           <GridItem item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ marginY: 10 }}>
             <Grid container direction="column" display="flex" height="100%">
-              <Typography variant="h3" style={{ fontSize: 60 }}>
-                <OptimaFont>
-                  Healing Hands, Tranquil Minds
-                </OptimaFont>
+              <Typography variant="h3" style={{ fontSize: 60, fontFamily: theme.typography.fontFamily.title }}>
+                Healing Hands, Tranquil Minds
               </Typography>
               <Typography variant="h6" style={{ fontSize: 30 }}>
                 <OptimaFont>
@@ -262,126 +259,6 @@ function App() {
 }
 
 export default App;
-
-const HelveticaFont = styled('p')({
-  fontFamily: 'Helvetica',
-  margin: 0,
-});
-
-const OptimaFont = styled('p')({
-  fontFamily: 'OptimaLight',
-  lineHeight: 1,
-  margin: 0
-});
-
-const StyledAppBar = styled(AppBar)(({ isVisible }) => ({
-  "&&": {
-    // backgroundColor: "#8B5E3C",
-    height: "12vh",
-    backgroundColor: 'white',
-    opacity: isVisible ? 1 : 0,
-    transition: "opacity 0.5s ease, background-color 0.5s ease",
-    "&:hover": {
-      // backgroundColor: "grey",
-    },
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 100,
-  }
-}));
-
-const StyledToolbar = styled(Toolbar)({
-  display: 'flex',
-  // justifyContent: 'space-between',
-  justifyContent: 'center',
-  alignItems: "center"
-});
-
-const AppBarItem = styled(Typography)({
-  color: 'black',
-  fontSize: 20,
-  textTransform: 'none',
-  transition: 'color 0.3s linear',
-  '&:hover': {
-    color: '#A67C52'
-  }
-});
-
-const AppBarButton = styled(Button)({
-  backgroundColor: "transparent"
-})
-
-
-
-function AnotherAppBar() {
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    let timeoutId = null;
-    const handleVisibilityChange = () => {
-      setIsVisible(false);
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => setIsVisible(true), 300);
-    };
-
-    window.addEventListener("scroll", handleVisibilityChange);
-
-    return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener("scroll", handleVisibilityChange);
-    };
-  }, []);
-
-  const [hover, setHover] = useState(false)
-
-  return (
-    <StyledAppBar isVisible={isVisible} position='fixed'>
-      <StyledToolbar>
-        <Box display="flex">
-          {/* <Typography variant="h6" style={{ color: 'black', fontSize: 30 }} sx={{ display: { xs: "none", sm: "block" } }}>
-            <OptimaFont>
-              Oasis Massage Therapy
-            </OptimaFont>
-          </Typography> */}
-          <img src={process.env.PUBLIC_URL + '/logo.png'} alt="Your image description" style={{ width: 60, height: "auto" }}
-          />
-        </Box>
-        <Box display="flex" backgroundColor="">
-          <div style={{ width: 20 }} />
-          <Grid container direction="row" justify="space-between">
-            <AppBarButton style={{
-              backgroundColor: 'transparent'
-            }
-            }>
-              <AppBarItem variant="h8"
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-              >
-                <OptimaFont style={{ color: hover ? '#A67C52' : 'black', transition: 'color 0.3s linear' }}>
-                  About
-                </OptimaFont>
-              </AppBarItem>
-            </AppBarButton>
-            <div style={{ width: 20 }} />
-            <Typography variant="h8" style={{ color: 'black', fontSize: 20 }}>
-              <OptimaFont>
-                Services
-              </OptimaFont>
-            </Typography>
-            <div style={{ width: 20 }} />
-            <Typography variant="h8" style={{ color: 'black', fontSize: 20 }}>
-              <OptimaFont>
-                Contact
-              </OptimaFont>
-            </Typography>
-          </Grid>
-        </Box>
-      </StyledToolbar>
-    </StyledAppBar >
-  )
-}
 
 const ListItemStyled = styled(ListItem)({
   border: '1px solid #ddd',
