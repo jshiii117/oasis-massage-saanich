@@ -12,6 +12,7 @@ import StoreIcon from '@mui/icons-material/Store';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import CustomAppBar from './/components/appbar';
 import theme from './styles/theme';
+import LandingSection from './components/landingSection';
 
 
 function App() {
@@ -32,13 +33,6 @@ function App() {
   }
 `;
 
-  const GridItem = styled(Grid)`
-  display: flex;
-  flex-basis: 50%;
-  background-color: white;
-  align-items: center;
-  justify-content: center;
-`
   const OptimaFont = styled('p')({
     fontFamily: 'OptimaLight',
     lineHeight: 1,
@@ -71,28 +65,7 @@ function App() {
     <Root>
       <GridContainer container direction="column" spacing={0}>
         <CustomAppBar />
-        <Grid container direction="row" display="flex" width="100%" sx={{ mb: 4 }}>
-          <GridItem item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ marginY: 10 }}>
-            <Grid container direction="column" display="flex" height="100%">
-              <Typography variant="h3" style={{ fontSize: 60, fontFamily: theme.typography.fontFamily.title }}>
-                Healing Hands, Tranquil Minds
-              </Typography>
-              <Typography variant="h6" style={{ fontSize: 30 }}>
-                <OptimaFont>
-                  Oasis Massage Therapy
-                </OptimaFont>
-              </Typography>
-              <div style={{ height: 40 }} />
-              <ColorButton variant="contained" size="large">
-                <HelveticaFont>Book Now</HelveticaFont>
-              </ColorButton>
-            </Grid>
-          </GridItem>
-          <GridItem item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ backgroundColor: "" }}>
-            <img src={process.env.PUBLIC_URL + '/massage.jpg'} alt="Your image description" width="100%" />
-          </GridItem>
-        </Grid>
-
+        <LandingSection />
         <Grid container direction="column" display="flex" width="100%" maxWidth={1000} alignSelf="center" sx={{ mb: 4, backgroundColor: "" }}>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <Typography variant="h6" style={{ fontSize: 30, textAlign: "center" }}>

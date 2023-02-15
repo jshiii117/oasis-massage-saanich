@@ -5,22 +5,15 @@ import { useState, useEffect } from 'react';
 import theme from '../styles/theme';
 import { OptimaTypography } from '../styles/globalStyles';
 
-
-const OptimaFont = styled('p')({
-    fontFamily: 'OptimaLight',
-    lineHeight: 1,
-    margin: 0
-});
-
 const StyledAppBar = styled(AppBar)(({ isVisible }) => ({
     "&&": {
         height: "12vh",
         backgroundColor: 'white',
         opacity: isVisible ? 1 : 0,
         transition: "opacity 0.5s ease, background-color 0.5s ease",
-        "&:hover": {
-            // backgroundColor: "grey",
-        },
+        // "&:hover": {
+        //     backgroundColor: "yellow",
+        // },
         position: "fixed",
         top: 0,
         left: 0,
@@ -31,7 +24,6 @@ const StyledAppBar = styled(AppBar)(({ isVisible }) => ({
 
 const StyledToolbar = styled(Toolbar)({
     display: 'flex',
-    // justifyContent: 'space-between',
     justifyContent: 'center',
     alignItems: "center"
 });
@@ -53,6 +45,7 @@ const AppBarButton = styled(Button)({
 function CustomAppBar() {
     const [isVisible, setIsVisible] = useState(true);
 
+    //Disappear and reappear appbar on scroll
     useEffect(() => {
         let timeoutId = null;
         const handleVisibilityChange = () => {
@@ -69,7 +62,7 @@ function CustomAppBar() {
         };
     }, []);
 
-    const [hover, setHover] = useState(false)
+    const [hover, setHover] = useState([false, false, false])
 
     return (
         <StyledAppBar isVisible={isVisible} position='fixed'>
@@ -85,10 +78,10 @@ function CustomAppBar() {
                             backgroundColor: 'transparent'
                         }
                         }>
-                            <OptimaTypography variant="h8" onMouseEnter={() => setHover(true)}
-                                onMouseLeave={() => setHover(false)}
+                            <OptimaTypography variant="h8" onMouseEnter={() => setHover([true, false, false])}
+                                onMouseLeave={() => setHover([false, false, false])}
                                 style={{
-                                    color: hover ? '#A67C52' : 'black',
+                                    color: hover[0] ? '#A67C52' : 'black',
                                     fontSize: 20,
                                     textTransform: 'none',
                                     transition: 'color 0.3s linear',
@@ -102,20 +95,38 @@ function CustomAppBar() {
                         }
                         }>
                             <AppBarItem variant="h8"
-                                onMouseEnter={() => setHover(true)}
-                                onMouseLeave={() => setHover(false)}
+                                onMouseEnter={() => setHover([false, true, false])}
+                                onMouseLeave={() => setHover([false, false, false])}
                             >
-                                <Typography variant="h8" style={{ color: 'black', fontSize: 20, fontFamily: theme.typography.fontFamily.title }}>
+                                <OptimaTypography variant="h8" style={{
+                                    color: hover[1] ? '#A67C52' : 'black',
+                                    fontSize: 20,
+                                    textTransform: 'none',
+                                    transition: 'color 0.3s linear',
+                                }}>
                                     Services
-                                </Typography>
+                                </OptimaTypography>
                             </AppBarItem>
                         </AppBarButton>
                         <div style={{ width: 20 }} />
-                        <Typography variant="h8" style={{ color: 'black', fontSize: 20 }}>
-                            <OptimaFont>
-                                Contact
-                            </OptimaFont>
-                        </Typography>
+                        <AppBarButton style={{
+                            backgroundColor: 'transparent'
+                        }
+                        }>
+                            <AppBarItem variant="h8"
+                                onMouseEnter={() => setHover([false, false, true])}
+                                onMouseLeave={() => setHover([false, false, false])}
+                            >
+                                <OptimaTypography variant="h8" style={{
+                                    color: hover[2] ? '#A67C52' : 'black',
+                                    fontSize: 20,
+                                    textTransform: 'none',
+                                    transition: 'color 0.3s linear',
+                                }}>
+                                    Contact
+                                </OptimaTypography>
+                            </AppBarItem>
+                        </AppBarButton>
                     </Grid>
                 </Box>
             </StyledToolbar>

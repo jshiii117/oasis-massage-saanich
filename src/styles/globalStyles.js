@@ -1,16 +1,15 @@
-import React from 'react';
-import { AppBar, Typography, Toolbar, Box, Grid, List, ListItem, ListItemText, ListItemIcon, Button, Card, CardActionArea, CardMedia, CardContent } from '@mui/material';
+import { Typography } from '@mui/material';
 import styled from 'styled-components';
 import theme from './theme';
 
-const OptimaFont = styled('p')({
-    fontFamily: 'OptimaLight',
-    lineHeight: 1,
-    margin: 0
-});
-
 const OptimaTypography = styled(Typography)({
-    fontFamily: theme.typography.fontFamily.title,
+    //className="optima" can be added if CSS specificity is causing font to not load
+    '&.optima': {
+        fontFamily: theme.typography.fontFamily.optimaLight,
+        lineHeight: 1,
+        margin: 0
+    },
+    fontFamily: theme.typography.fontFamily.optimaLight,
     lineHeight: 1,
     margin: 0,
 
