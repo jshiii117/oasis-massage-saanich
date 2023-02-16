@@ -6,7 +6,8 @@ import { OptimaType } from '../styles/globalStyles';
 
 const StyledAppBar = styled(AppBar)(({ isVisible }) => ({
     "&&": {
-        height: "12vh",
+        height: "12%",
+        maxHeight: 65,
         backgroundColor: 'white',
         opacity: isVisible ? 1 : 0,
         transition: "opacity 0.5s ease, background-color 0.5s ease",

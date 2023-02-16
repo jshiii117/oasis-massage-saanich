@@ -22,7 +22,7 @@ const GridItem = styled(Grid)({
 
 function TreatmentSection() {
     return (
-        <Grid container direction="column" display="flex" width="100%" alignSelf="center" sx={{ mb: 4, backgroundColor: "" }}>
+        <Grid container direction="column" display="flex" width="100%" maxWidth={800} alignSelf="center" sx={{ mb: 4, backgroundColor: "" }}>
             <OptimaType className="optima" variant="h6" style={{ fontSize: 30, textAlign: "center" }}>
                 Available Services
             </OptimaType>
