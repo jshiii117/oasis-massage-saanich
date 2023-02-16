@@ -19,11 +19,10 @@ function ContactSection () {
             <Box lg={6} sx={{ backgroundColor: "grey" }}>
               <img src={process.env.PUBLIC_URL + '/25.png'} alt="Your image description" width={300} />
             </Box>
-            <ContactList>
-            </ContactList>
-          </Grid>
+            <ContactList />
+            </Grid>
+            </Grid>
         </Grid>
-      </Grid>
     )
 }
 

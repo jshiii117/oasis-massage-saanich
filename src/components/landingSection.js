@@ -3,6 +3,7 @@ import React from 'react';
 import { Typography, Grid, Button } from '@mui/material';
 import styled from 'styled-components';
 import { OptimaType } from '../styles/globalStyles';
+import theme from '../styles/theme';
 
 const GridItem = styled(Grid)({
     display: 'flex',

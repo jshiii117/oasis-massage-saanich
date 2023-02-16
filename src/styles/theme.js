@@ -7,6 +7,17 @@ const theme = createTheme({
             optimaLight: 'OptimaLight',
             helvetica: ['Helvetica', 'Arial', 'sans-serif'],
         },
+    },
+    palette: {
+        primary: {
+          main: '#8B5E3C',
+        },
+        secondary: {
+          main: '#f50057',
+        },
+        customColor: {
+          main: '#00ff00',
+        },
     }
 })
 
