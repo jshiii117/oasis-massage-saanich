@@ -1,3 +1,4 @@
+import React, { forwardRef } from 'react';
 import { Grid, Box } from '@mui/material';
 import styled from 'styled-components';
 import { OptimaType } from '../styles/globalStyles';
@@ -10,26 +11,30 @@ const GridItem = styled(Grid)({
     justifyContent: 'center'
 })
 
-function BookingSection() {
+const BookingSection = forwardRef((prop, ref) => {
     return (
-        <Grid container direction="column" display="flex" width="100%" maxWidth={800} alignSelf="center" sx={{ mb: 4, backgroundColor: "" }}>
-            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                <OptimaType className="optima" variant="h6" style={{ fontSize: 30, textAlign: "center" }}>
-                    Contact
-                </OptimaType>
-                <div style={{ height: 20 }} />
-                <Grid container direction="row" display="flex" width="100%" sx={{ mb: 4, backgroundColor: "", justifyContent: "space-evenly" }}>
-                    <Grid item lg={6} sx={{ backgroundColor: "grey" }}>
-                        <img src={process.env.PUBLIC_URL + '/25.png'} alt="Your image description" width={300} />
-                    </Grid>
-                    <Grid item lg={6}>
-                        <IFrameWindow />
+        <React.Fragment>
+            <div ref={ref} />
+            <Grid container direction="column" display="flex" width="100%" maxWidth={800} alignSelf="center" sx={{ mb: 4, backgroundColor: "" }}>
+                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+                    <OptimaType className="optima" variant="h6" style={{ fontSize: 30, textAlign: "center" }}>
+                        Contact
+                    </OptimaType>
+                    <div style={{ height: 20 }} />
+                    <Grid container direction="row" display="flex" width="100%" sx={{ mb: 4, backgroundColor: "", justifyContent: "space-evenly" }}>
+                        <Grid item lg={6} sx={{ backgroundColor: "grey" }}>
+                            <img src={process.env.PUBLIC_URL + '/25.png'} alt="Your image description" width={300} />
+                        </Grid>
+                        <Grid item lg={6}>
+                            <IFrameWindow />
+                        </Grid>
                     </Grid>
                 </Grid>
             </Grid>
-        </Grid>
-    )
-}
+        </React.Fragment>
+
+    );
+});
 
 export default BookingSection;
 
@@ -43,12 +48,3 @@ function IFrameWindow() {
         />
     )
 }
-
-// <Grid container direction="column" display="flex" height="80vh" width="100%" sx={{ mb: 4, backgroundColor: 'yellow' }}>
-// <GridItem item xs={12} sm={12} md={12} lg={12} xl={12} sx={{ backgroundColor: "pink" }}>
-//   Booking Section
-// </GridItem >
-// <GridItem item xs={12} sm={12} md={12} lg={12} xl={12}>
-//   <IFrameWindow/>
-// </GridItem>
-// </Grid>

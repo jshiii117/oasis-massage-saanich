@@ -1,12 +1,10 @@
 import React from 'react';
-import { AppBar, Toolbar, Box, Grid, Button, useTheme, useMediaQuery, IconButton, ListItem, ListItemButton, ListItemText, List, ListItemIcon } from '@mui/material';
+import { AppBar, Toolbar, Box, Grid, Button, useTheme, useMediaQuery, IconButton, Drawer, Divider } from '@mui/material';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { OptimaType } from '../styles/globalStyles';
 import MenuIcon from '@mui/icons-material/Menu';
-import InfoIcon from '@mui/icons-material/Info';
-import EventIcon from '@mui/icons-material/Event';
-import EmailIcon from '@mui/icons-material/Email';
+import CloseIcon from '@mui/icons-material/Close';
 
 const StyledAppBar = styled(AppBar)(({ isVisible }) => ({
     "&&": {
@@ -30,17 +28,14 @@ const StyledToolbar = styled(Toolbar)({
     alignItems: "center"
 });
 
-// const AppBarItem = styled(Typography)({
-//     color: 'black',
-//     fontSize: 20,
-//     textTransform: 'none',
-//     transition: 'color 0.3s linear',
-//     '&:hover': {
-//         color: '#A67C52'
-//     }
-// });
+const scrollToRef = (ref) => {
+    if (ref.current) {
+        ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
 
-function CustomAppBar() {
+function CustomAppBar(props) {
+    const refList = props.refList;
     const [isVisible, setIsVisible] = useState(true);
 
     //Disappear and reappear appbar on scroll
@@ -51,9 +46,7 @@ function CustomAppBar() {
             clearTimeout(timeoutId);
             timeoutId = setTimeout(() => setIsVisible(true), 300);
         };
-
         window.addEventListener("scroll", handleVisibilityChange);
-
         return () => {
             clearTimeout(timeoutId);
             window.removeEventListener("scroll", handleVisibilityChange);
@@ -61,7 +54,6 @@ function CustomAppBar() {
     }, []);
 
     const theme = useTheme();
-
     var isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
@@ -73,12 +65,12 @@ function CustomAppBar() {
                 </Box>
                 <Box display="flex" backgroundColor="">
                     {isSmallScreen ? (
-                        <MobileMenu />
+                        <MobileMenu refList={refList} />
                     ) : (
                         <Grid container direction="row" justify="center">
-                            <DesktopAppBarItem itemName={"About"} />
-                            <DesktopAppBarItem itemName={"Booking"} />
-                            <DesktopAppBarItem itemName={"Contact"} />
+                            <DesktopAppBarItem itemName={"About"} onClick={() => scrollToRef(refList[0])} />
+                            <DesktopAppBarItem itemName={"Booking"} onClick={() => scrollToRef(refList[1])} />
+                            <DesktopAppBarItem itemName={"Contact"} onClick={() => scrollToRef(refList[2])} />
                         </Grid>
                     )}
                 </Box>
@@ -90,8 +82,12 @@ function CustomAppBar() {
 function DesktopAppBarItem(props) {
     const [hover, setHover] = useState(false);
 
+    const handleClick = () => {
+        props.onClick();
+    }
+
     return (
-        <Button style={{ backgroundColor: 'transparent' }
+        <Button onClick={() => handleClick()} style={{ backgroundColor: 'transparent' }
         }>
             <OptimaType variant="h8" onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
@@ -107,63 +103,81 @@ function DesktopAppBarItem(props) {
     )
 }
 
-function MobileMenu() {
+function MobileAppBarItem(props) {
+    const [hover, setHover] = useState(false);
+
+    const handleClick = () => {
+        // props.closeFunction();
+        props.scrollFunction();
+    }
+
+    return (
+        <Button onClick={handleClick} style={{ backgroundColor: '' }
+        }>
+            <OptimaType variant="h8" onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+                style={{
+                    color: hover ? '#A67C52' : 'black',
+                    fontSize: 20,
+                    textTransform: 'none',
+                    transition: 'color 0.3s linear',
+                    textAlign: 'center'
+                }}>
+                {props.itemName}
+            </OptimaType>
+        </Button>
+    )
+}
+
+function MobileMenu(props) {
+    const refList = props.refList;
     const [menuOpen, setMenuOpen] = useState(false);
+
     return (
         <>
             <IconButton
                 edge="start"
                 color="inherit"
                 aria-label="menu"
-                onClick={() => setMenuOpen(!menuOpen)}
+                onClick={() => setMenuOpen(true)}
             >
                 <MenuIcon style={{ color: 'black', fontSize: 30 }} />
             </IconButton>
             {menuOpen && (
-                <Box
-                    sx={{
-                        position: 'fixed',
-                        top: 0,
-                        left: 0,
-                        width: '100vw',
-                        height: '100vh',
-                        backgroundColor: 'white',
-                        zIndex: 1,
-                    }}
-                >
-                    <Box display="flex" justifyContent="flex-end" p={2}>
-                        <IconButton onClick={() => setMenuOpen(!menuOpen)}>
-                            <MenuIcon />
-                        </IconButton>
-                    </Box>
-                    <List>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <InfoIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="About" />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <EventIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Booking" />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <EmailIcon />
-                                </ListItemIcon>
-                                <ListItemText primary="Contact" />
-                            </ListItemButton>
-                        </ListItem>
-                    </List>
-                </Box>
-            )}
+                <Box display="flex" p={2}>
+                    <Drawer
+                        anchor="bottom"
+                        variant="temporary"
+                        open={menuOpen}
+                        onClose={() => setMenuOpen(false)}
+                        onOpen={() => setMenuOpen(true)}
+                    >
+                        <Box sx={{
+                            p: 3,
+                            minHeight: '100vh',
+                            minWidth: '80vw',
+                            backgroundColor: "#dbc8ff",
+                        }}>
+                            <Box display="flex" sx={{ justifyContent: 'flex-end' }}>
+                                <IconButton sx={{ mb: 2 }}>
+                                    <CloseIcon onClick={() => setMenuOpen(false)} />
+                                </IconButton>
+                            </Box>
+                            <Divider sx={{ mb: 2 }} />
+                            <Grid container direction="column" width="100%" sx={{ mb: 2 }}>
+                                <MobileAppBarItem itemName={'About'} scrollFunction={() => scrollToRef(refList[0])} closeFunction={() => setMenuOpen(false)} />
+                                <div style={{ height: 10 }} />
+                                <MobileAppBarItem itemName={'Booking'} scrollFunction={() => scrollToRef(refList[1])} />
+                                <div style={{ height: 10 }} />
+                                <MobileAppBarItem itemName={'Contact'} scrollFunction={() => scrollToRef(refList[2])} />
+                                <div style={{ height: 10 }} />
+                            </Grid>
+
+                        </Box>
+                    </Drawer>
+                </Box >
+            )
+            }
         </>
 
     )

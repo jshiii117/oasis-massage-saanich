@@ -99,22 +99,3 @@ const massages = [
         massageDescription: "Manipulation of the body's soft tissue to stimulate circulation and promote relaxation, maintain joint and tissue health."
     }
 ]
-
-{/* <GridItem item xs={12} sm={12} md={12} lg={3} xl={4} sx={{ backgroundColor: "", margin: 3 }}>
-    <Card sx={{ maxWidth: 345 }}>
-    <CardActionArea>
-        <CardContent>
-        <Box height={140} sx={{ backgroundColor: "brown" }} />
-        </CardContent>
-        <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-            Trigger Point Modalities
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-        </Typography>
-        </CardContent>
-    </CardActionArea>
-    </Card>
-</GridItem> */}

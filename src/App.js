@@ -1,6 +1,6 @@
 import './App.css';
-import React from 'react';
-import { Grid } from '@mui/material';
+import React, { useRef } from 'react';
+import { Grid, Button } from '@mui/material';
 import styled from 'styled-components';
 import CustomAppBar from './/components/appbar';
 import LandingSection from './components/landingSection';
@@ -29,15 +29,29 @@ function App() {
   }
 `;
 
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+
+  const scrollToRef = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+
   return (
     <Root>
       <GridContainer container direction="column" spacing={0}>
-        <CustomAppBar />
+        <CustomAppBar refList={[ref1, ref2, ref3]} />
         <LandingSection />
-        <AboutSection />
+        <Button variant="contained" color="primary" onClick={() => scrollToRef(ref1)}>
+          Scroll to Component
+        </Button>
+        <AboutSection ref={ref1} />
         <TreatmentSection />
-        <BookingSection />
-        <ContactSection />
+        <BookingSection ref={ref2} />
+        <ContactSection ref={ref3} />
       </GridContainer>
       <Footer />
     </Root >
