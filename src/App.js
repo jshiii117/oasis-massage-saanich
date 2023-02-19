@@ -33,21 +33,11 @@ function App() {
   const ref2 = useRef(null);
   const ref3 = useRef(null);
 
-  const scrollToRef = (ref) => {
-    if (ref.current) {
-      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-
   return (
     <Root>
       <GridContainer container direction="column" spacing={0}>
         <CustomAppBar refList={[ref1, ref2, ref3]} />
         <LandingSection />
-        <Button variant="contained" color="primary" onClick={() => scrollToRef(ref1)}>
-          Scroll to Component
-        </Button>
         <AboutSection ref={ref1} />
         <TreatmentSection />
         <BookingSection ref={ref2} />
