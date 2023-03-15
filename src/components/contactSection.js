@@ -1,41 +1,69 @@
-import React, { forwardRef } from 'react';
-import { Grid, Box, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import styled from 'styled-components';
-import PhoneIcon from '@mui/icons-material/Phone';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import Face2Icon from '@mui/icons-material/Face2';
-import StoreIcon from '@mui/icons-material/Store';
-import ContactSupportIcon from '@mui/icons-material/ContactSupport';
-import { OptimaType } from '../styles/globalStyles';
+import React, { forwardRef } from "react";
+import {
+  Grid,
+  Box,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import styled from "styled-components";
+import PhoneIcon from "@mui/icons-material/Phone";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import Face2Icon from "@mui/icons-material/Face2";
+import StoreIcon from "@mui/icons-material/Store";
+import ContactSupportIcon from "@mui/icons-material/ContactSupport";
+import { OptimaType } from "../styles/globalStyles";
 
 const ContactSection = forwardRef((props, ref) => {
   return (
     <React.Fragment>
       <div ref={ref} />
-      <Grid container direction="column" display="flex" width="100%" maxWidth={800} alignSelf="center" sx={{ mb: 4, backgroundColor: "" }}>
+      <Grid
+        container
+        direction="column"
+        display="flex"
+        width="100%"
+        maxWidth={800}
+        alignSelf="center"
+        sx={{ mb: 4, backgroundColor: "" }}
+      >
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <OptimaType className="optima" variant="h6" style={{ fontSize: 30, textAlign: "center" }}>
+          <OptimaType
+            className="optima"
+            variant="h6"
+            style={{ fontSize: 30, textAlign: "center" }}
+          >
             Contact
           </OptimaType>
           <div style={{ height: 20 }} />
-          <Grid container direction="row" display="flex" width="100%" sx={{ mb: 4, backgroundColor: "", justifyContent: "space-evenly" }}>
+          <Grid
+            container
+            direction="row"
+            display="flex"
+            width="100%"
+            sx={{ mb: 4, backgroundColor: "", justifyContent: "space-evenly" }}
+          >
             <Box lg={6} sx={{ backgroundColor: "grey" }}>
-              <img src={process.env.PUBLIC_URL + '/25.png'} alt="Your image description" width={300} />
+              <img
+                src={process.env.PUBLIC_URL + "/25.png"}
+                alt="Your image description"
+                width={300}
+              />
             </Box>
             <ContactList />
           </Grid>
         </Grid>
       </Grid>
     </React.Fragment>
-
   );
 });
 
 const ListItemStyled = styled(ListItem)({
-  border: '1px solid #ddd',
-  borderRadius: '20px',
-  padding: '10px',
-  marginBottom: '10px',
+  border: "1px solid #ddd",
+  borderRadius: "20px",
+  padding: "10px",
+  marginBottom: "10px",
 });
 
 function ContactList() {
@@ -69,9 +97,7 @@ function ContactList() {
         <ListItemIcon>
           <ContactSupportIcon />
         </ListItemIcon>
-        <ListItemText
-          primary="For all inquiries, please contact me by email or phone during business hours, 9AM-5PM PST from Monday to Sunday"
-        />
+        <ListItemText primary="For all inquiries, please contact me by email or phone during business hours, 9AM-5PM PST from Monday to Sunday" />
       </ListItemStyled>
     </List>
   );
