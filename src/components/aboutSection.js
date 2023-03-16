@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { Grid, Stack } from "@mui/material";
+import { Grid, Typography, useMediaQuery } from "@mui/material";
 import "../App.css";
 import { HelveticaType, OptimaType } from "../styles/globalStyles";
 import theme from "../styles/theme";
@@ -13,11 +13,12 @@ const AboutSection = forwardRef((props, ref) => {
         direction="column"
         display="flex"
         width="100%"
+        height="100vh"
         maxWidth={1000}
-        alignSelf="center"
-        sx={{ mb: 4, backgroundColor: "" }}
+        justifyContent="center"
+        sx={{ mb: 4, zIndex: 1 }}
       >
-        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+        <Grid item>
           <OptimaType
             className="optima"
             variant="h6"
@@ -25,7 +26,7 @@ const AboutSection = forwardRef((props, ref) => {
           >
             Meet your Therapist
           </OptimaType>
-          <div style={{ height: 20 }} />
+          <div style={{ height: "3%" }} />
           <Grid
             container
             direction="row"
@@ -34,31 +35,48 @@ const AboutSection = forwardRef((props, ref) => {
             maxWidth={2000}
             alignSelf="center"
             sx={{
-              backgroundColor: theme.palette.testBackground.main,
               alignItems: "center",
-              justifyContent: "space-evenly",
+              textAlign: useMediaQuery(theme.breakpoints.up("md"))
+                ? ""
+                : "center",
             }}
           >
-            <img
-              src={process.env.PUBLIC_URL + "/headshot.png"}
-              alt="Placeholder alt text"
-              style={{
-                maxWidth: "40%",
-                minWidth: "40%",
-                height: "auto",
-                alignSelf: "end",
-                justifySelf: "end",
+            <Grid
+              item
+              md={6}
+              sx={{ alignContent: "center", justifyContent: "center" }}
+            >
+              <img
+                src={process.env.PUBLIC_URL + "/headshot.png"}
+                alt="Placeholder alt text"
+                style={{
+                  maxWidth: useMediaQuery(theme.breakpoints.up("md"))
+                    ? "80%"
+                    : "40%",
+                  height: "auto",
+                  alignSelf: "end",
+                  justifySelf: "end",
+                }}
+              />
+            </Grid>
+            <Grid
+              item
+              md={6}
+              sx={{
+                maxWidth: "100%",
               }}
-            />
-            <Grid item xs={12} sm={12} md={6} sx={{ maxWidth: "50%" }}>
-              <OptimaType
-                className="optima"
+            >
+              <Typography
                 variant="h5"
-                style={{ fontSize: 25, textAlign: "", lineHeight: 1.8 }}
+                style={{
+                  fontSize: 25,
+                  lineHeight: 1.8,
+                  fontWeight: 400,
+                }}
               >
-                Marie Balledine
-              </OptimaType>
-              <HelveticaType
+                Malou Ballendine
+              </Typography>
+              <Typography
                 variant="h8"
                 style={{ fontSize: 18, textAlign: "center", lineHeight: 1.8 }}
               >
@@ -72,7 +90,7 @@ const AboutSection = forwardRef((props, ref) => {
                 stretching and deep tissue work. My goal is to help my clients
                 manage stress, chronic pain and mental  health challenges as
                 well as improve their general wellbeing
-              </HelveticaType>
+              </Typography>
             </Grid>
           </Grid>
         </Grid>

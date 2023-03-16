@@ -26,7 +26,7 @@ const ContactSection = forwardRef((props, ref) => {
         width="100%"
         maxWidth={800}
         alignSelf="center"
-        sx={{ mb: 4, backgroundColor: "" }}
+        sx={{ mb: 4, zIndex: 1 }}
       >
         <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
           <OptimaType

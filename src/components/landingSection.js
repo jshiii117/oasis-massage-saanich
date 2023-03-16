@@ -37,7 +37,7 @@ function LandingSection() {
       alignItems="center"
       width="100%"
       maxWidth={1000}
-      sx={{ mb: 4, backgroundColor: "" }}
+      sx={{ mb: 4, zIndex: 1 }}
     >
       <GridItem item xs={12} sm={12} md={6} lg={6} xl={6} sx={{ marginY: 10 }}>
         <Grid

@@ -38,7 +38,7 @@ function TreatmentSection() {
       width="100%"
       maxWidth={800}
       alignSelf="center"
-      sx={{ mb: 4, backgroundColor: "" }}
+      sx={{ mb: 4, zIndex: 1 }}
     >
       <OptimaType
         className="optima"
@@ -64,15 +64,7 @@ function TreatmentSection() {
 
 function TreatmentCard(massage) {
   return (
-    <GridItem
-      item
-      xs={12}
-      sm={6}
-      md={4}
-      lg={3}
-      xl={4}
-      sx={{ backgroundColor: "", margin: 3 }}
-    >
+    <GridItem item xs={12} sm={6} md={4} lg={3} xl={4} sx={{ margin: 3 }}>
       <StyledCard
         sx={{ maxWidth: 345, minHeight: 300 }}
         style={{ transition: "all 0.5s ease-in-out" }}
