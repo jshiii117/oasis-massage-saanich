@@ -97,7 +97,7 @@ function ContactList() {
         <ListItemIcon>
           <ContactSupportIcon />
         </ListItemIcon>
-        <ListItemText primary="For all inquiries, please contact me by email or phone during business hours, 9AM-5PM PST from Monday to Sunday" />
+        <ListItemText primary="For more information on services offered policies, direct billing, and more, please contact or email ballendinermt@gmail.com" />
       </ListItemStyled>
     </List>
   );
