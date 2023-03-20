@@ -80,7 +80,12 @@ function LandingSection() {
             }
           >
             <ColorButton
-              onClick={() => window.open("https://google.com", "_blank")}
+              onClick={() =>
+                window.open(
+                  "https://www.vagaro.com/oasismassagetherapy2/book-now",
+                  "_blank"
+                )
+              }
               variant="contained"
               size="large"
               sx={{
@@ -103,7 +108,7 @@ function LandingSection() {
             </ColorButton>
             <ColorButton
               onClick={() => {
-                const recipientEmail = "example@example.com";
+                const recipientEmail = "ballendinermt@gmail.com";
                 const mailtoUrl = `mailto:${recipientEmail}`;
 
                 window.open(mailtoUrl);
