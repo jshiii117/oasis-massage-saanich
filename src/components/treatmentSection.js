@@ -1,5 +1,6 @@
 import {
   Grid,
+  Container,
   Typography,
   Box,
   Button,
@@ -35,6 +36,7 @@ function TreatmentSection() {
       container
       direction="column"
       display="flex"
+      minHeight="100vh"
       width="100%"
       maxWidth={800}
       alignSelf="center"
@@ -71,7 +73,7 @@ function TreatmentCard(massage) {
       >
         <CardActionArea>
           <CardContent>
-            <Box height={140} width="100%" sx={{ backgroundColor: "brown" }}>
+            <Box width="100%" sx={{ backgroundColor: "brown" }}>
               <img
                 src={massage.massageImage}
                 alt="Placeholder alt text"
