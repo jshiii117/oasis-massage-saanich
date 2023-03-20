@@ -14,6 +14,7 @@ import Face2Icon from "@mui/icons-material/Face2";
 import StoreIcon from "@mui/icons-material/Store";
 import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 import { OptimaType } from "../styles/globalStyles";
+import theme from "../styles/theme";
 
 const ContactSection = forwardRef((props, ref) => {
   return (
@@ -44,10 +45,16 @@ const ContactSection = forwardRef((props, ref) => {
             width="100%"
             sx={{ mb: 4, backgroundColor: "", justifyContent: "space-evenly" }}
           >
-            <Box lg={6} sx={{ backgroundColor: "grey" }}>
+            <Box
+              lg={6}
+              sx={{
+                backgroundColor: theme.palette.secondary.main,
+                borderRadius: 5,
+              }}
+            >
               <img
                 src={process.env.PUBLIC_URL + "/25.png"}
-                alt="Your image description"
+                alt="Contact Decor"
                 width={300}
               />
             </Box>
@@ -64,6 +71,7 @@ const ListItemStyled = styled(ListItem)({
   borderRadius: "20px",
   padding: "10px",
   marginBottom: "10px",
+  backgroundColor: "white",
 });
 
 function ContactList() {

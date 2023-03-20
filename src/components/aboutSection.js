@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { Grid, Typography, useMediaQuery } from "@mui/material";
 import "../App.css";
-import { HelveticaType, OptimaType } from "../styles/globalStyles";
+import { OptimaType } from "../styles/globalStyles";
 import theme from "../styles/theme";
 
 const AboutSection = forwardRef((props, ref) => {
@@ -13,10 +13,8 @@ const AboutSection = forwardRef((props, ref) => {
         direction="column"
         display="flex"
         width="100%"
-        height="100vh"
         maxWidth={1000}
-        justifyContent="center"
-        sx={{ mb: 4, zIndex: 1 }}
+        sx={{ mb: "2rem", zIndex: 1, alignContent: "center" }}
       >
         <Grid item>
           <OptimaType
@@ -33,7 +31,6 @@ const AboutSection = forwardRef((props, ref) => {
             display="flex"
             width="100%"
             maxWidth={2000}
-            alignSelf="center"
             sx={{
               alignItems: "center",
               textAlign: useMediaQuery(theme.breakpoints.up("md"))
@@ -41,21 +38,18 @@ const AboutSection = forwardRef((props, ref) => {
                 : "center",
             }}
           >
-            <Grid
-              item
-              md={6}
-              sx={{ alignContent: "center", justifyContent: "center" }}
-            >
+            <Grid item md={6}>
               <img
                 src={process.env.PUBLIC_URL + "/headshot.png"}
                 alt="Placeholder alt text"
                 style={{
                   maxWidth: useMediaQuery(theme.breakpoints.up("md"))
-                    ? "80%"
+                    ? "70%"
                     : "40%",
                   height: "auto",
                   alignSelf: "end",
                   justifySelf: "end",
+                  borderRadius: 5,
                 }}
               />
             </Grid>
@@ -64,6 +58,9 @@ const AboutSection = forwardRef((props, ref) => {
               md={6}
               sx={{
                 maxWidth: "100%",
+                backgroundColor: "white",
+                padding: "2rem",
+                borderRadius: 5,
               }}
             >
               <Typography
