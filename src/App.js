@@ -39,9 +39,13 @@ function App() {
         <CustomAppBar refList={[ref1, ref2, ref3]} />
         {/* <ParallaxBackground /> */}
         <LandingSection />
+        <div style={{ height: "5vh" }} />
         <AboutSection ref={ref1} />
+        <div style={{ height: "5vh" }} />
         <TreatmentSection />
+        <div style={{ height: "5vh" }} />
         <BookingSection ref={ref2} />
+        <div style={{ height: "5vh" }} />
         <ContactSection ref={ref3} />
       </GridContainer>
       <Footer />
