@@ -2,8 +2,7 @@ import "../App.css";
 import React from "react";
 import { Grid, Button, useTheme, useMediaQuery } from "@mui/material";
 import styled from "styled-components";
-import { HelveticaType, OptimaType } from "../styles/globalStyles";
-import theme from "../styles/theme";
+import { OptimaType } from "../styles/globalStyles";
 
 const GridItem = styled(Grid)({
   display: "flex",

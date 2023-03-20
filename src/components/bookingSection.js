@@ -1,15 +1,14 @@
 import React, { forwardRef } from "react";
-import { Grid, Box } from "@mui/material";
-import styled from "styled-components";
+import { Grid } from "@mui/material";
 import { OptimaType } from "../styles/globalStyles";
 
-const GridItem = styled(Grid)({
-  display: "flex",
-  flexBasis: "50%",
-  backgroundColor: "white",
-  alignItems: "center",
-  justifyContent: "center",
-});
+// const GridItem = styled(Grid)({
+//   display: "flex",
+//   flexBasis: "50%",
+//   backgroundColor: "white",
+//   alignItems: "center",
+//   justifyContent: "center",
+// });
 
 const BookingSection = forwardRef((prop, ref) => {
   return (

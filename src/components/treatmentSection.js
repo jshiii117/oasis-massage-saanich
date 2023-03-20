@@ -1,6 +1,5 @@
 import {
   Grid,
-  Container,
   Typography,
   Box,
   Button,
@@ -11,7 +10,6 @@ import {
 } from "@mui/material";
 import styled from "styled-components";
 import { OptimaType } from "../styles/globalStyles";
-import theme from "../styles/theme";
 
 const StyledCard = styled(Card)`
   max-width: 345px;
