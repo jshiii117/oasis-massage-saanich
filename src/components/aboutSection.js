@@ -41,7 +41,7 @@ const AboutSection = forwardRef((props, ref) => {
             <Grid item md={6}>
               <img
                 src={process.env.PUBLIC_URL + "/headshot.png"}
-                alt="Placeholder alt text"
+                alt="Therapist headshot"
                 style={{
                   maxWidth: useMediaQuery(theme.breakpoints.up("md"))
                     ? "70%"
@@ -75,7 +75,11 @@ const AboutSection = forwardRef((props, ref) => {
               </Typography>
               <Typography
                 variant="h8"
-                style={{ fontSize: 18, textAlign: "center", lineHeight: 1.8 }}
+                style={{
+                  textAlign: "center",
+                  lineHeight: 1.8,
+                  fontSize: useMediaQuery(theme.breakpoints.up("md")) ? 16 : 12,
+                }}
               >
                 I am a graduate of the West Coast College of Massage Therapy
                 (WCCMT) in Victoria BC and a Registered Massage Therapist.  I
