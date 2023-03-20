@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useRef } from "react";
-import { Grid, Button } from "@mui/material";
+import { Grid } from "@mui/material";
 import styled from "styled-components";
 import CustomAppBar from ".//components/appbar";
 import LandingSection from "./components/landingSection";
@@ -9,12 +9,11 @@ import TreatmentSection from "./components/treatmentSection";
 import BookingSection from "./components/bookingSection";
 import ContactSection from "./components/contactSection";
 import Footer from "./components/footer";
-import ParallaxBackground from "./components/parallaxBackground";
 
 function App() {
   const Root = styled.div`
-    background-color: black;
     min-height: 100vh;
+    margni: 0;
   `;
 
   const GridContainer = styled(Grid)`
@@ -23,7 +22,6 @@ function App() {
     @media (min-width: 960px) {
       padding: 6rem;
     }
-    background-color: white;
     & > * {
       padding-bottom: ${(props) => props.spacing}px;
     }
@@ -35,20 +33,28 @@ function App() {
 
   return (
     <Root>
-      <GridContainer container direction="column" spacing={0}>
+      <img
+        src={process.env.PUBLIC_URL + "/mainBackground.svg"}
+        alt="Background"
+        style={{ position: "fixed", zIndex: -1 }}
+      />
+      <GridContainer
+        container
+        direction="column"
+        sx={{ zIndex: 1, position: "relative" }}
+      >
         <CustomAppBar refList={[ref1, ref2, ref3]} />
-        {/* <ParallaxBackground /> */}
         <LandingSection />
-        <div style={{ height: "5vh" }} />
+        <div style={{ height: "10vh" }} />
         <AboutSection ref={ref1} />
-        <div style={{ height: "5vh" }} />
+        <div style={{ height: "10vh" }} />
         <TreatmentSection />
         <div style={{ height: "5vh" }} />
         <BookingSection ref={ref2} />
         <div style={{ height: "5vh" }} />
         <ContactSection ref={ref3} />
       </GridContainer>
-      <Footer />
+      <Footer sx={{ position: "fixed", zIndex: 2 }} />
     </Root>
   );
 }

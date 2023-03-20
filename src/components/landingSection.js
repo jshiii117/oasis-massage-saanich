@@ -8,7 +8,6 @@ import theme from "../styles/theme";
 const GridItem = styled(Grid)({
   display: "flex",
   flexBasis: "50%",
-  backgroundColor: "white",
   alignItems: "center",
   justifyContent: "center",
 });
