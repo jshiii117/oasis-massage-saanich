@@ -5,6 +5,10 @@ import { OptimaType } from "../styles/globalStyles";
 import theme from "../styles/theme";
 
 const AboutSection = forwardRef((props, ref) => {
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+  const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
+  const fontSize = isMdUp ? 16 : isSmDown ? 10.5 : 12;
+
   return (
     <React.Fragment>
       <div ref={ref} />
@@ -75,10 +79,10 @@ const AboutSection = forwardRef((props, ref) => {
               </Typography>
               <Typography
                 variant="h8"
-                style={{
+                sx={{
                   textAlign: "center",
                   lineHeight: 1.8,
-                  fontSize: useMediaQuery(theme.breakpoints.up("md")) ? 16 : 12,
+                  fontSize: fontSize,
                 }}
               >
                 I am a graduate of the West Coast College of Massage Therapy
