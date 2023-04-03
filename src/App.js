@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useRef } from "react";
-import { Grid } from "@mui/material";
+import { Grid, Container } from "@mui/material";
 import styled from "styled-components";
 import CustomAppBar from ".//components/appbar";
 import LandingSection from "./components/landingSection";
@@ -13,6 +13,7 @@ import Footer from "./components/footer";
 function App() {
   const Root = styled.div`
     min-height: 100vh;
+    min-width: 100vw;
     margni: 0;
     background-image: url(${process.env.PUBLIC_URL}/mainBackground.svg);
     background-repeat: no-repeat;
@@ -37,11 +38,6 @@ function App() {
 
   return (
     <Root>
-      {/* <img
-        src={process.env.PUBLIC_URL + "/mainBackground.svg"}
-        alt="Background"
-        style={{ position: "fixed", zIndex: -1,  }}
-      /> */}
       <GridContainer
         container
         direction="column"

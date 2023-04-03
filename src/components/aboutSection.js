@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { Grid, Typography, useMediaQuery } from "@mui/material";
+import { Grid, Typography, useMediaQuery, styled } from "@mui/material";
 import "../App.css";
 import { OptimaType } from "../styles/globalStyles";
 import theme from "../styles/theme";
@@ -9,17 +9,18 @@ const AboutSection = forwardRef((props, ref) => {
   const isSmDown = useMediaQuery(theme.breakpoints.down("sm"));
   const fontSize = isMdUp ? 16 : isSmDown ? 10.5 : 12;
 
+  const GridContainer = styled(Grid)`
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 2rem;
+    align-content: center;
+  `;
+
   return (
     <React.Fragment>
       <div ref={ref} />
-      <Grid
-        container
-        direction="column"
-        display="flex"
-        width="100%"
-        maxWidth={1000}
-        sx={{ mb: "2rem", zIndex: 1, alignContent: "center" }}
-      >
+      <GridContainer container>
         <Grid item>
           <OptimaType
             className="optima"
@@ -28,7 +29,7 @@ const AboutSection = forwardRef((props, ref) => {
           >
             Meet your Therapist
           </OptimaType>
-          <div style={{ height: "3%" }} />
+          <div style={{ height: "5%", minHeight: "50px" }} />
           <Grid
             container
             direction="row"
@@ -37,38 +38,35 @@ const AboutSection = forwardRef((props, ref) => {
             maxWidth={2000}
             sx={{
               alignItems: "center",
+              justifyContent: "space-evenly",
               textAlign: useMediaQuery(theme.breakpoints.up("md"))
                 ? ""
                 : "center",
             }}
           >
-            <Grid item md={6}>
-              <img
-                src={process.env.PUBLIC_URL + "/headshot.png"}
-                alt="Therapist headshot"
-                style={{
-                  maxWidth: useMediaQuery(theme.breakpoints.up("md"))
-                    ? "70%"
-                    : "40%",
-                  height: "auto",
-                  alignSelf: "end",
-                  justifySelf: "end",
-                  borderRadius: 5,
-                }}
-              />
-            </Grid>
+            <img
+              src={process.env.PUBLIC_URL + "/headshot.png"}
+              alt="Therapist headshot"
+              style={{
+                maxWidth: useMediaQuery(theme.breakpoints.up("md"))
+                  ? "40%"
+                  : "80%",
+                borderRadius: 10,
+              }}
+            />
             <Grid
               item
               md={6}
               sx={{
+                mt: useMediaQuery(theme.breakpoints.up("md")) ? "" : "20px",
                 maxWidth: "100%",
                 backgroundColor: "white",
                 padding: "2rem",
                 borderRadius: 5,
               }}
             >
-              <Typography
-                variant="h5"
+              <OptimaType
+                className="optima"
                 style={{
                   fontSize: 25,
                   lineHeight: 1.8,
@@ -76,7 +74,7 @@ const AboutSection = forwardRef((props, ref) => {
                 }}
               >
                 Malou Ballendine
-              </Typography>
+              </OptimaType>
               <Typography
                 variant="h8"
                 sx={{
@@ -99,7 +97,7 @@ const AboutSection = forwardRef((props, ref) => {
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      </GridContainer>
     </React.Fragment>
   );
 });

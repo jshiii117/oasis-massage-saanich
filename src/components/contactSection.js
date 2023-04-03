@@ -45,19 +45,11 @@ const ContactSection = forwardRef((props, ref) => {
             width="100%"
             sx={{ mb: 4, backgroundColor: "", justifyContent: "space-evenly" }}
           >
-            <Box
-              lg={6}
-              sx={{
-                backgroundColor: theme.palette.secondary.main,
-                borderRadius: 5,
-              }}
-            >
-              <img
-                src={process.env.PUBLIC_URL + "/25.png"}
-                alt="Contact Decor"
-                width={300}
-              />
-            </Box>
+            {/* <img
+              src={process.env.PUBLIC_URL + "/25.png"}
+              alt="Contact Decor"
+              style={{ width: "300px" }}
+            /> */}
             <ContactList />
           </Grid>
         </Grid>
