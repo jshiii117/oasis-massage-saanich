@@ -14,6 +14,10 @@ function App() {
   const Root = styled.div`
     min-height: 100vh;
     margni: 0;
+    background-image: url(${process.env.PUBLIC_URL}/mainBackground.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
   `;
 
   const GridContainer = styled(Grid)`
@@ -33,11 +37,11 @@ function App() {
 
   return (
     <Root>
-      <img
+      {/* <img
         src={process.env.PUBLIC_URL + "/mainBackground.svg"}
         alt="Background"
-        style={{ position: "fixed", zIndex: -1 }}
-      />
+        style={{ position: "fixed", zIndex: -1,  }}
+      /> */}
       <GridContainer
         container
         direction="column"
