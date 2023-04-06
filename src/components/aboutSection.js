@@ -14,7 +14,6 @@ const AboutSection = forwardRef((props, ref) => {
     width: 100%;
     max-width: 1000px;
     margin-bottom: 2rem;
-    align-content: center;
   `;
 
   return (

@@ -30,6 +30,8 @@ function App() {
     & > * {
       padding-bottom: ${(props) => props.spacing}px;
     }
+    justify-content: center;
+    align-content: center;
   `;
 
   const ref1 = useRef(null);

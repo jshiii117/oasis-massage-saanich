@@ -47,13 +47,7 @@ function TreatmentSection() {
       >
         Available Services
       </OptimaType>
-      <Grid
-        container
-        direction="row"
-        display="flex"
-        justifyContent="center"
-        sx={{ backgroundColor: "" }}
-      >
+      <Grid container direction="row" display="flex" justifyContent="center">
         {massages.map((massage) => (
           <TreatmentCard {...massage} />
         ))}
@@ -66,12 +60,12 @@ function TreatmentCard(massage) {
   return (
     <GridItem item xs={12} sm={6} md={4} lg={3} xl={4} sx={{ margin: 3 }}>
       <StyledCard
-        sx={{ maxWidth: 345, minHeight: 300 }}
+        sx={{ maxWidth: 345, minHeight: "300px" }}
         style={{ transition: "all 0.5s ease-in-out" }}
       >
         <CardActionArea>
           <CardContent>
-            <Box width="100%" sx={{ backgroundColor: "brown" }}>
+            <Box width="100%" sx={{ backgroundColor: "white" }}>
               <img
                 src={massage.massageImage}
                 alt="Placeholder alt text"
@@ -84,7 +78,7 @@ function TreatmentCard(massage) {
               />
             </Box>
           </CardContent>
-          <CardContent sx={{ backgroundColor: "", height: "100%" }}>
+          <CardContent sx={{ height: "100%" }}>
             <OptimaType
               className="optima"
               gutterBottom
