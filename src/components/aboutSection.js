@@ -1,12 +1,5 @@
 import React, { forwardRef } from "react";
-import {
-  Grid,
-  Typography,
-  useMediaQuery,
-  Box,
-  styled,
-  Fade,
-} from "@mui/material";
+import { Grid, Typography, useMediaQuery, styled, Fade } from "@mui/material";
 import "../App.css";
 import { OptimaType } from "../styles/globalStyles";
 import theme from "../styles/theme";

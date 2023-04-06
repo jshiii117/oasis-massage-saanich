@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useRef } from "react";
-import { Grid, Container } from "@mui/material";
+import { Grid } from "@mui/material";
 import styled from "styled-components";
 import CustomAppBar from ".//components/appbar";
 import LandingSection from "./components/landingSection";
@@ -23,7 +23,7 @@ function App() {
 
   const GridContainer = styled(Grid)`
     display: flex;
-    padding: 3rem;
+    // padding: 3rem;
     @media (min-width: 960px) {
       padding: 6rem;
     }

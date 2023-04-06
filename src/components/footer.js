@@ -15,9 +15,17 @@ const FooterContainer = styled.footer`
 const Footer = () => {
   return (
     <FooterContainer>
-      <Typography variant="body" sx={{ textAlign: "center" }}>
-        Copyright &copy; {new Date().getFullYear()} Oasis Massage Therapy |
-        Developed by James Shi
+      <Typography
+        variant="body"
+        sx={{ textAlign: "center", fontSize: "0.7rem" }}
+      >
+        Oasis Massage Therapy &copy; {new Date().getFullYear()} | Made by{" "}
+        <a
+          href="https://linkedin.com/in/jamesshi117/"
+          style={{ textDecoration: "underline", color: "inherit" }}
+        >
+          James Shi
+        </a>
       </Typography>
     </FooterContainer>
   );
