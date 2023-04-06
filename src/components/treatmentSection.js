@@ -23,7 +23,6 @@ const StyledCard = styled(Card)`
 const GridItem = styled(Grid)({
   display: "flex",
   flexBasis: "50%",
-  backgroundColor: "white",
   alignItems: "center",
   justifyContent: "center",
 });
@@ -31,12 +30,10 @@ const GridItem = styled(Grid)({
 function TreatmentSection() {
   return (
     <Grid
+      backgroundColor="red"
       container
       direction="column"
       display="flex"
-      minHeight="100vh"
-      width="100%"
-      maxWidth={800}
       alignSelf="center"
       sx={{ mb: 4, zIndex: 1 }}
     >
@@ -45,8 +42,9 @@ function TreatmentSection() {
         variant="h6"
         style={{ fontSize: 30, textAlign: "center" }}
       >
-        Available Services
+        Available Treatments
       </OptimaType>
+      <div style={{ height: "2vh", minHeight: "20px" }} />
       <Grid container direction="row" display="flex" justifyContent="center">
         {massages.map((massage) => (
           <TreatmentCard {...massage} />
@@ -60,10 +58,15 @@ function TreatmentCard(massage) {
   return (
     <GridItem item xs={12} sm={6} md={4} lg={3} xl={4} sx={{ margin: 3 }}>
       <StyledCard
-        sx={{ maxWidth: 345, minHeight: "300px" }}
+        sx={{
+          minHeight: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+        }}
         style={{ transition: "all 0.5s ease-in-out" }}
       >
-        <CardActionArea>
+        <CardActionArea sx={{ height: "80%" }}>
           <CardContent>
             <Box width="100%" sx={{ backgroundColor: "white" }}>
               <img
