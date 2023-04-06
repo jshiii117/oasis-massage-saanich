@@ -30,7 +30,6 @@ const GridItem = styled(Grid)({
 function TreatmentSection() {
   return (
     <Grid
-      backgroundColor="red"
       container
       direction="column"
       display="flex"

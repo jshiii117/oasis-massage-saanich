@@ -1,5 +1,5 @@
 import React, { forwardRef } from "react";
-import { Grid, Typography, useMediaQuery, styled } from "@mui/material";
+import { Grid, Typography, useMediaQuery, Box, styled } from "@mui/material";
 import "../App.css";
 import { OptimaType } from "../styles/globalStyles";
 import theme from "../styles/theme";
@@ -28,12 +28,13 @@ const AboutSection = forwardRef((props, ref) => {
           >
             Meet your Therapist
           </OptimaType>
-          <div style={{ height: "5%", minHeight: "50px" }} />
+          <div style={{ height: "2vh", minHeight: "20px" }} />
           <Grid
             container
             direction="row"
             display="flex"
             width="100%"
+            height="100%"
             maxWidth={2000}
             sx={{
               alignItems: "center",
@@ -43,22 +44,24 @@ const AboutSection = forwardRef((props, ref) => {
                 : "center",
             }}
           >
-            <img
-              src={process.env.PUBLIC_URL + "/headshot.png"}
+            <Box
+              component="img"
+              src={process.env.PUBLIC_URL + "/headshot.jpg"}
               alt="Therapist headshot"
-              style={{
-                maxWidth: useMediaQuery(theme.breakpoints.up("md"))
-                  ? "40%"
+              sx={{
+                width: useMediaQuery(theme.breakpoints.up("md"))
+                  ? "45%"
                   : "80%",
                 borderRadius: 10,
+                mr: "2%",
               }}
             />
+
             <Grid
               item
               md={6}
               sx={{
                 mt: useMediaQuery(theme.breakpoints.up("md")) ? "" : "20px",
-                maxWidth: "100%",
                 backgroundColor: "white",
                 padding: "2rem",
                 borderRadius: 5,
