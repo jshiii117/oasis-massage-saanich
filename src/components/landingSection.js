@@ -1,6 +1,6 @@
 import "../App.css";
 import React from "react";
-import { Grid, Button, useTheme, useMediaQuery } from "@mui/material";
+import { Grid, Button, useTheme, useMediaQuery, Fade } from "@mui/material";
 import styled from "styled-components";
 import { OptimaType } from "../styles/globalStyles";
 
@@ -135,21 +135,23 @@ function LandingSection() {
           </Grid>
         </Grid>
       </GridItem>
-      <GridItem
-        item
-        xs={12}
-        sm={12}
-        md={6}
-        lg={6}
-        xl={6}
-        sx={{ backgroundColor: "" }}
-      >
-        <img
-          src={process.env.PUBLIC_URL + "/mainDesign.png"}
-          alt="Placeholder alt text"
-          style={{ width: "100%", maxWidth: "100%", minWidth: 400 }}
-        />
-      </GridItem>
+      <Fade in={true} timeout={1000}>
+        <GridItem
+          item
+          xs={12}
+          sm={12}
+          md={6}
+          lg={6}
+          xl={6}
+          sx={{ backgroundColor: "" }}
+        >
+          <img
+            src={process.env.PUBLIC_URL + "/mainDesign.png"}
+            alt="Placeholder alt text"
+            style={{ width: "100%", maxWidth: "100%", minWidth: 400 }}
+          />
+        </GridItem>
+      </Fade>
     </Grid>
   );
 }

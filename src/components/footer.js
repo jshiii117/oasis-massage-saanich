@@ -1,12 +1,13 @@
 import { Typography } from "@mui/material";
 import styled from "styled-components";
+import theme from "../styles/theme";
 
 const FooterContainer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #333;
-  color: #fff;
+  background-color: white;
+  color: ${theme.palette.primary.main};
   flex-wrap: wrap;
   padding: 1rem;
 `;

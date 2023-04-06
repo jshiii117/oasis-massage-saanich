@@ -1,5 +1,12 @@
 import React, { forwardRef } from "react";
-import { Grid, Typography, useMediaQuery, Box, styled } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  useMediaQuery,
+  Box,
+  styled,
+  Fade,
+} from "@mui/material";
 import "../App.css";
 import { OptimaType } from "../styles/globalStyles";
 import theme from "../styles/theme";
@@ -44,18 +51,19 @@ const AboutSection = forwardRef((props, ref) => {
                 : "center",
             }}
           >
-            <Box
-              component="img"
-              src={process.env.PUBLIC_URL + "/headshot.jpg"}
-              alt="Therapist headshot"
-              sx={{
-                width: useMediaQuery(theme.breakpoints.up("md"))
-                  ? "45%"
-                  : "80%",
-                borderRadius: 10,
-                mr: "2%",
-              }}
-            />
+            <Fade in={true} timeout={1000}>
+              <img
+                src={process.env.PUBLIC_URL + "/headshot.jpg"}
+                alt="Therapist headshot"
+                style={{
+                  width: useMediaQuery(theme.breakpoints.up("md"))
+                    ? "45%"
+                    : "80%",
+                  borderRadius: 10,
+                  mr: "2%",
+                }}
+              />
+            </Fade>
 
             <Grid
               item
