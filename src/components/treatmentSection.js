@@ -1,3 +1,4 @@
+import React, { forwardRef } from "react";
 import {
   Grid,
   Typography,
@@ -27,31 +28,34 @@ const GridItem = styled(Grid)({
   justifyContent: "center",
 });
 
-function TreatmentSection() {
+const TreatmentSection = forwardRef((props, ref) => {
   return (
-    <Grid
-      container
-      direction="column"
-      display="flex"
-      alignSelf="center"
-      sx={{ mb: 4, zIndex: 1 }}
-    >
-      <OptimaType
-        className="optima"
-        variant="h6"
-        style={{ fontSize: 30, textAlign: "center" }}
+    <React.Fragment>
+      <div ref={ref} />
+      <Grid
+        container
+        direction="column"
+        display="flex"
+        alignSelf="center"
+        sx={{ mb: 4, zIndex: 1 }}
       >
-        Available Treatments
-      </OptimaType>
-      <div style={{ height: "2vh", minHeight: "20px" }} />
-      <Grid container direction="row" display="flex" justifyContent="center">
-        {massages.map((massage) => (
-          <TreatmentCard {...massage} />
-        ))}
+        <OptimaType
+          className="optima"
+          variant="h6"
+          style={{ fontSize: 30, textAlign: "center" }}
+        >
+          Available Treatments
+        </OptimaType>
+        <div style={{ height: "2vh", minHeight: "20px" }} />
+        <Grid container direction="row" display="flex" justifyContent="center">
+          {massages.map((massage) => (
+            <TreatmentCard {...massage} />
+          ))}
+        </Grid>
       </Grid>
-    </Grid>
+    </React.Fragment>
   );
-}
+});
 
 function TreatmentCard(massage) {
   return (

@@ -90,12 +90,16 @@ function CustomAppBar(props) {
                 onClick={() => scrollToRef(refList[0])}
               />
               <DesktopAppBarItem
-                itemName={"Booking"}
+                itemName={"Treatments"}
                 onClick={() => scrollToRef(refList[1])}
               />
               <DesktopAppBarItem
-                itemName={"Contact"}
+                itemName={"Booking"}
                 onClick={() => scrollToRef(refList[2])}
+              />
+              <DesktopAppBarItem
+                itemName={"Contact"}
+                onClick={() => scrollToRef(refList[3])}
               />
             </Grid>
           )}
@@ -213,14 +217,20 @@ function MobileMenu(props) {
                 />
                 <div style={{ height: 10 }} />
                 <MobileAppBarItem
-                  itemName={"Booking"}
+                  itemName={"Treatment"}
                   scrollFunction={() => scrollToRef(refList[1])}
                   closeFunction={() => handleClose()}
                 />
                 <div style={{ height: 10 }} />
                 <MobileAppBarItem
-                  itemName={"Contact"}
+                  itemName={"Booking"}
                   scrollFunction={() => scrollToRef(refList[2])}
+                  closeFunction={() => handleClose()}
+                />
+                <div style={{ height: 10 }} />
+                <MobileAppBarItem
+                  itemName={"Contact"}
+                  scrollFunction={() => scrollToRef(refList[3])}
                   closeFunction={() => handleClose()}
                 />
                 <div style={{ height: 10 }} />

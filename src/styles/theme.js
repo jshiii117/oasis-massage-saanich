@@ -15,9 +15,6 @@ const theme = createTheme({
     secondary: {
       main: "#CF9A69",
     },
-    testBackground: {
-      main: "rgba(0, 153, 255, 0.5)",
-    },
   },
 });
 
