@@ -76,7 +76,7 @@ const AboutSection = forwardRef((props, ref) => {
                   fontWeight: 400,
                 }}
               >
-                Malou Ballendine
+                Maria Ballendine
               </OptimaType>
               <Typography
                 variant="h8"
